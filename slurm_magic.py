@@ -18,8 +18,7 @@ def modal(func):
     def wrapped_func(obj, line):
         result = func(obj, line)
         if obj._display == "pandas":
-            return pandas.read_table(io.StringIO(result), sep='\s+',
-                    error_bad_lines=False)
+            return pandas.read_table(io.StringIO(result), sep='\s+')
         else:
             return result
     wrapped_func.__doc__ = func.__doc__
